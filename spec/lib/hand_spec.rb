@@ -6,6 +6,7 @@ describe 'Hand' do
   let(:flush) { Hand.new('4C 6C 8C TC QC') }
   let(:straight) { Hand.new('3S 4C 5H 6D 7C') }
   let(:full_house) { Hand.new('TH TC TS 9D 9C') }
+  let(:trips) { Hand.new('TH TC TS 9D 8C') }
   let(:two_pair) { Hand.new('TH TC 9D 9C 8S') }
   let(:one_pair) { Hand.new('TH TC 9D 8C 7S') }
   let(:high_card) { Hand.new('AH 2C 4D 5S 8H') }
@@ -25,5 +26,13 @@ describe 'Hand' do
     royal_flush.cards.each do |card|
       expect(card.suit).to eq('H')
     end
+  end
+
+  it 'detects a pair' do
+    expect(one_pair.of_a_kind?(2)).to eq(true)
+  end
+
+  it 'detects three of a kind' do
+    expect(trips.of_a_kind?(3)).to eq(true)
   end
 end
