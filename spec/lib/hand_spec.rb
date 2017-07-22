@@ -11,6 +11,7 @@ describe 'Hand' do
   let(:high_card) { Hand.new('AH 2C 4D 5S 8H') }
 
   it 'initializes a string of cards into an array of Card objects' do
+    expect(royal_flush.cards).to be_kind_of(Array)
     expect(royal_flush.cards[0]).to be_kind_of(Card)
   end
 

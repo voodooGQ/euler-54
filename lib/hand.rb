@@ -4,8 +4,6 @@ class Hand
   attr_reader :cards
 
   def initialize(str)
-    str.split(' ').each do |card_str|
-      (@cards ||= []) << Card.new(card_str)
-    end
+    @cards = str.split(' ').map{|card_str| Card.new(card_str)}
   end
 end
