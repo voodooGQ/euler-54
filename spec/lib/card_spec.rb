@@ -13,10 +13,10 @@ describe 'Card' do
     expect(six_of_spades.suit).to eq('S')
   end
 
-  it 'provides the correct value' do
-    expect(queen_of_hearts.value).to eq('Q')
-    expect(two_of_clubs.value).to eq('2')
-    expect(ace_of_diamonds.value).to eq('A')
-    expect(six_of_spades.value).to eq('6')
+  it 'provides the correct numeric value' do
+    expect(queen_of_hearts.value).to eq(12)
+    expect(two_of_clubs.value).to eq(2)
+    expect(ace_of_diamonds.value).to eq(14)
+    expect(six_of_spades.value).to eq(6)
   end
 end
