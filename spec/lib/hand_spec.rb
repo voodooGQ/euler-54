@@ -86,4 +86,10 @@ describe 'Hand' do
     expect(quads.high_card).to eq(3)
     expect(two_pair.high_card).to eq(10)
   end
+
+  it 'can detect the high card in a sequence' do
+    expect(two_pair.sequence_modifier(2)).to eq(10)
+    expect(quads.sequence_modifier(4)).to eq(2)
+    expect(royal_flush.sequence_modifier(3)).to eq(0)
+  end
 end

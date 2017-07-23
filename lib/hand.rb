@@ -46,23 +46,23 @@ class Hand
   end
 
   def high_card
-    @values.keys.sort.last
+    high_card_in_sequence(@values)
   end
 
-  #
+  def sequence_modifier(num)
+    high_card_in_sequence(select_by_x_of_a_kind(num))
+  end
+
+  private
+  # Abstract X of a kind in the hand
   def select_by_x_of_a_kind(num)
     @values.select{|k,v| v == num}
   end
 
-  def high_card_in_combo(combo)
-    combo.keys.sort.last
+  # Given a Hash combo find the highest card value
+  def high_card_in_sequence(combo)
+    combo.keys.sort.last || 0
   end
-
-  def low_card_in_combo(combo)
-    combo.keys.sort.first
-  end
-
-  private
 
   # Get a hash of the card values (key) in the hand and the count (value)
   def card_value_count
