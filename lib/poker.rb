@@ -10,6 +10,19 @@ class Poker
     @hand_2       = Hand.new(@cards[5..9])
   end
 
+  def declare_winner
+    player_1_score = Score.new(@hand_1)
+    player_2_score = Score.new(@hand_2)
+
+    if player_1_score > player_2_score
+      "Player 1 wins with #{player_1_score.combo}"
+    elsif player_1_score < player_2_score
+      "Player 2 wins with #{player_2_score.combo}"
+    else
+      "Players pushed with #{player_1_score.combo}"
+    end
+  end
+
   private
 
   def validate

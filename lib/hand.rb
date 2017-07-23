@@ -49,6 +49,12 @@ class Hand
     high_card_in_sequence(@values)
   end
 
+  # Get the actual high card object so we can figure out it's name
+  # Utilized when responding to scores
+  def high_card_object
+    @cards.select{|card| card.value == high_card}.first
+  end
+
   # Helper function to get the modifier card in a sequence.
   # Indicates who wins in tying hand types
   def sequence_modifier(num)

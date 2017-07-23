@@ -37,4 +37,10 @@ describe 'Card' do
     expect(ace_of_diamonds.value).to eq(14)
     expect(six_of_spades.value).to eq(6)
   end
+
+  it 'provides the correct human readable card name' do
+    expect(queen_of_hearts.to_s).to eq('Queen of Hearts')
+    expect(ace_of_diamonds.to_s).to eq('Ace of Diamonds')
+    expect(six_of_spades.to_s).to eq('6 of Spades')
+  end
 end

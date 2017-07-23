@@ -108,4 +108,15 @@ RSpec.shared_context "poker_hands", shared_context: :meta_data do
       Card.new('8H')
     ])
   end
+
+  # Low Card (Loses to high card)
+  let(:low_card) do
+    Hand.new([
+      Card.new('QS'),
+      Card.new('TD'),
+      Card.new('8H'),
+      Card.new('6C'),
+      Card.new('4S')
+    ])
+  end
 end
