@@ -34,6 +34,10 @@ class Hand
     @cards.map(&:suit).uniq.size == 1
   end
 
+  def straight_flush?
+    self.straight? && self.flush?
+  end
+
   private
 
   # Get a hash of the card values (key) in the hand and the count (value)

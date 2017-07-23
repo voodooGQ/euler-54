@@ -58,4 +58,12 @@ describe 'Hand' do
     expect(flush.flush?).to eq(true)
     expect(straight.flush?).to eq(false)
   end
+
+  it 'detects a straight flush' do
+    expect(straight_flush.flush?).to eq(true)
+    expect(straight_flush.straight?).to eq(true)
+    expect(straight_flush.straight_flush?).to eq(true)
+    expect(straight.straight_flush?).to eq(false)
+    expect(flush.straight_flush?).to eq(false)
+  end
 end
