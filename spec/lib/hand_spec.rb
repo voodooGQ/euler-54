@@ -3,9 +3,10 @@ require 'spec_helper.rb'
 describe 'Hand' do
   let(:royal_flush) { Hand.new('TH JH QH KH AH') }
   let(:straight_flush) { Hand.new('2C 3C 4C 5C 6C') }
+  let(:quads) { Hand.new('2C 2D 2S 2H 3C') }
+  let(:full_house) { Hand.new('TH TC TS 9D 9C') }
   let(:flush) { Hand.new('4C 6C 8C TC QC') }
   let(:straight) { Hand.new('3S 4C 5H 6D 7C') }
-  let(:full_house) { Hand.new('TH TC TS 9D 9C') }
   let(:trips) { Hand.new('TH TC TS 9D 8C') }
   let(:two_pair) { Hand.new('TH TC 9D 9C 8S') }
   let(:one_pair) { Hand.new('TH TC 9D 8C 7S') }
@@ -29,10 +30,22 @@ describe 'Hand' do
   end
 
   it 'detects a pair' do
-    expect(one_pair.of_a_kind?(2)).to eq(true)
+    expect(one_pair.one_pair?).to eq(true)
+    expect(high_card.one_pair?).to eq(false)
+  end
+
+  it 'detects two pair' do
+    expect(two_pair.two_pair?).to eq(true)
+    expect(one_pair.two_pair?).to eq(false)
   end
 
   it 'detects three of a kind' do
-    expect(trips.of_a_kind?(3)).to eq(true)
+    expect(trips.trips?).to eq(true)
+    expect(two_pair.trips?).to eq(false)
+  end
+
+  it 'detects four of a kind' do
+    expect(quads.quads?).to eq(true)
+    expect(trips.quads?).to eq(false)
   end
 end

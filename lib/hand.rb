@@ -1,5 +1,3 @@
-require 'card'
-
 class Hand
   attr_reader :cards, :values
 
@@ -8,8 +6,20 @@ class Hand
     @values = card_value_count
   end
 
-  def of_a_kind?(num)
-    @values.has_value?(num)
+  def one_pair?
+    @values.select{|k,v| v == 2}.size == 1
+  end
+
+  def two_pair?
+    @values.select{|k,v| v == 2}.size == 2
+  end
+
+  def trips?
+    @values.select{|k,v| v == 3}.size == 1
+  end
+
+  def quads?
+    @values.select{|k,v| v == 4}.size == 1
   end
 
   private
