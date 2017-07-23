@@ -2,7 +2,9 @@ class Score
   attr_reader :hand, :points, :combo
 
   def initialize(hand)
-    raise Exception, 'Only a hand of cards with value can be scored' unless hand.respond_to?('values')
+    unless hand.respond_to?('values')
+      raise Exception, 'Only a hand of cards with value can be scored'
+    end
     @hand = hand
     set_points_and_combo
   end
@@ -35,7 +37,9 @@ class Score
       points = 3000 + hand.sequence_modifier(2)
       @combo = 'Two Pair'
     elsif hand.one_pair?
-      points = 2000 + hand.sequence_modifier(2)
+      # Makes sure we don't run into issues with the high card totaling more
+      # than the combo
+      points = 2000 + (10 * hand.sequence_modifier(2))
       @combo = 'One Pair'
     else
       points = 1000

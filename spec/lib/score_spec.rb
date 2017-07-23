@@ -40,7 +40,7 @@ RSpec.describe 'Score' do
   end
 
   it 'properly scores a pair' do
-    expect(Score.new(one_pair).points).to eq(2020)
+    expect(Score.new(one_pair).points).to eq(2110)
   end
 
   it 'properly scores a high card' do

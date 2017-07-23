@@ -1,5 +1,3 @@
-require 'byebug'
-
 deps = []
 deps.push(*Dir.glob('./spec/support/**/*.rb'))
 deps.push(*Dir.glob('./lib/**/*.rb'))

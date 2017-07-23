@@ -88,6 +88,7 @@ describe 'Hand' do
     card = high_card.high_card_object
     expect(card.value).to eq(14)
     expect(card.suit).to eq('H')
+
     card = low_card.high_card_object
     expect(card.value).to eq(12)
     expect(card.suit).to eq('S')
