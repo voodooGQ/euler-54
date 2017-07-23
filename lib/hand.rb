@@ -1,8 +1,8 @@
 class Hand
   attr_reader :cards, :values
 
-  def initialize(str)
-    @cards = str.split(' ').map{|card_str| Card.new(card_str)}
+  def initialize(cards)
+    @cards  = cards
     @values = card_value_count
   end
 
