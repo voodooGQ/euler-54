@@ -1,9 +1,30 @@
 class Card
   attr_reader :value, :suit
 
-  FACE = {T: 10, J: 11, Q: 12, K: 13, A: 14}
-  NAMES = {'11' => 'Jack', '12' => 'Queen', '13' => 'King', '14' => 'Ace'}
-  SUITS = {C: 'Clubs', D: 'Diamonds', H: 'Hearts', S: 'Spades'}
+  # Face card values
+  FACE = {
+    T: 10,
+    J: 11,
+    Q: 12,
+    K: 13,
+    A: 14
+  }
+
+  # Face card full names (based on their values)
+  NAMES = {
+    '11' => 'Jack',
+    '12' => 'Queen',
+    '13' => 'King',
+    '14' => 'Ace'
+  }
+
+  # Suit full names
+  SUITS = {
+    C: 'Clubs',
+    D: 'Diamonds',
+    H: 'Hearts',
+    S: 'Spades'
+  }
 
   def initialize(str)
     validate(str)
@@ -11,6 +32,7 @@ class Card
     @suit   = str[1]
   end
 
+  # Return the 'human readable' name of the card
   def to_s
     val_str = @value.to_s
     human_value = NAMES.has_key?(val_str) ? NAMES[val_str] : val_str
