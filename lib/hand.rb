@@ -1,6 +1,3 @@
-#require './card.rb'
-#require 'byebug'
-
 class Hand
   attr_reader :cards, :values
 
