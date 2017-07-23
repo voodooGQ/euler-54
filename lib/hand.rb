@@ -7,19 +7,19 @@ class Hand
   end
 
   def one_pair?
-    @values.select{|k,v| v == 2}.size == 1
+    select_by_x_of_a_kind(2).size == 1
   end
 
   def two_pair?
-    @values.select{|k,v| v == 2}.size == 2
+    select_by_x_of_a_kind(2).size == 2
   end
 
   def trips?
-    @values.select{|k,v| v == 3}.size == 1
+    select_by_x_of_a_kind(3).size == 1
   end
 
   def quads?
-    @values.select{|k,v| v == 4}.size == 1
+    select_by_x_of_a_kind(4).size == 1
   end
 
   def straight?
@@ -49,6 +49,8 @@ class Hand
     high_card_in_sequence(@values)
   end
 
+  # Helper function to get the modifier card in a sequence.
+  # Indicates who wins in tying hand types
   def sequence_modifier(num)
     high_card_in_sequence(select_by_x_of_a_kind(num))
   end
