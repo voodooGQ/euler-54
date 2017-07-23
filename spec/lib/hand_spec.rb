@@ -49,6 +49,11 @@ describe 'Hand' do
     expect(trips.quads?).to eq(false)
   end
 
+  it 'detects a straight' do
+    expect(straight.straight?).to eq(true)
+    expect(flush.straight?).to eq(false)
+  end
+
   it 'detects a flush' do
     expect(flush.flush?).to eq(true)
     expect(straight.flush?).to eq(false)

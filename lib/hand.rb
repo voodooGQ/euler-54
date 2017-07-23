@@ -1,3 +1,5 @@
+#require './card.rb'
+
 class Hand
   attr_reader :cards, :values
 
@@ -20,6 +22,12 @@ class Hand
 
   def quads?
     @values.select{|k,v| v == 4}.size == 1
+  end
+
+  def straight?
+    return false unless @values.size == 5
+    keys = @values.keys
+    keys.sort == (keys.min..keys.max).to_a
   end
 
   def flush?
