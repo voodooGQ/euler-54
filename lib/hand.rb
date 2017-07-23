@@ -22,6 +22,10 @@ class Hand
     @values.select{|k,v| v == 4}.size == 1
   end
 
+  def flush?
+    @cards.map(&:suit).uniq.size == 1
+  end
+
   private
 
   # Get a hash of the card values (key) in the hand and the count (value)
