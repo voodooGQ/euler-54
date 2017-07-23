@@ -20,6 +20,6 @@ class Poker
   end
 
   def card_factory
-    @game_string.split(' ').map{|card_str| Card.new(card_str)}
+    @game_string.map{|card_str| Card.new(card_str)}
   end
 end
