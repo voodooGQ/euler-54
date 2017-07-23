@@ -49,6 +49,19 @@ class Hand
     @values.keys.sort.last
   end
 
+  #
+  def select_by_x_of_a_kind(num)
+    @values.select{|k,v| v == num}
+  end
+
+  def high_card_in_combo(combo)
+    combo.keys.sort.last
+  end
+
+  def low_card_in_combo(combo)
+    combo.keys.sort.first
+  end
+
   private
 
   # Get a hash of the card values (key) in the hand and the count (value)

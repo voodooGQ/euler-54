@@ -2,7 +2,7 @@ class Score
   attr_reader :hand
 
   def initialize(hand)
-    raise 'Only a poker hand can be scored' unless hand.kind_of? Hand
+    raise Exception, 'Only a hand of cards with value can be scored' unless hand.respond_to?('values')
     @hand = hand
   end
 
@@ -10,22 +10,25 @@ class Score
     if hand.royal_flush?
       points = 10000
     elsif hand.straight_flush?
-      points = 9000 + hand.values.keys.sort.last
+      points = 9000
     elsif hand.quads?
-      points = 8000 + hand.values.select{|k,v| v == 4}.keys[0]
+      points = 8000 + hand.low_card_in_combo(hand.select_by_x_of_a_kind(4))
     elsif hand.full_house?
-      points = 7000 + hand.values.select{|k,v| v == 3}.keys[0]
+      points = 7000 + hand.low_card_in_combo(hand.select_by_x_of_a_kind(3))
     elsif hand.flush?
-      points = 6000 + hand.values.keys.sort.last
+      points = 6000
     elsif hand.straight?
-      points = 5000 + hand.values.keys.sort.last
+      points = 5000
     elsif hand.trips?
-      points = 4000 + hand.values.select{|k,v| v == 3}.keys[0]
+      points = 4000 + hand.low_card_in_combo(hand.select_by_x_of_a_kind(3))
     elsif hand.two_pair?
-      points = 3000 + hand.values.select{|k,v| v == 2}.keys.sort.last
+      points = 3000 + hand.high_card_in_combo(hand.select_by_x_of_a_kind(2))
     elsif hand.one_pair?
-      points = 2000 + hand.values.select{|k,v| v == 2}.keys[0]
+      points = 2000 + hand.low_card_in_combo(hand.select_by_x_of_a_kind(2))
     end
     (points ||= 1000) + hand.high_card
   end
+
+  private
+
 end

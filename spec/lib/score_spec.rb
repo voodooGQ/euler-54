@@ -12,12 +12,16 @@ RSpec.describe 'Score' do
   let(:one_pair) { Hand.new('TH TC 9D 8C 7S') }
   let(:high_card) { Hand.new('AH 2C 4D 5S 8H') }
 
+  it 'raises an error when it cannot query a "values" method/accessor' do
+    expect { Score.new(Object.new) }.to raise_error(Exception)
+  end
+
   it 'properly scores a royal flush' do
     expect(Score.new(royal_flush).points).to eq(10014)
   end
 
   it 'properly scores a straight flush' do
-    expect(Score.new(straight_flush).points).to eq(9012)
+    expect(Score.new(straight_flush).points).to eq(9006)
   end
 
   it 'properly scores quads' do
@@ -29,11 +33,11 @@ RSpec.describe 'Score' do
   end
 
   it 'properly scores a flush' do
-    expect(Score.new(flush).points).to eq(6024)
+    expect(Score.new(flush).points).to eq(6012)
   end
 
   it 'properly scores a straight' do
-    expect(Score.new(straight).points).to eq(5014)
+    expect(Score.new(straight).points).to eq(5007)
   end
 
   it 'properly scores trips' do
