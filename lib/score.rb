@@ -33,10 +33,10 @@ class Score
       @combo = 'Trips'
     elsif hand.two_pair?
       points = 3000 + hand.sequence_modifier(2)
-      @combo = 'a Two Pair'
+      @combo = 'Two Pair'
     elsif hand.one_pair?
       points = 2000 + hand.sequence_modifier(2)
-      @combo = 'a One Pair'
+      @combo = 'One Pair'
     else
       points = 1000
       @combo = "the High Card (#{hand.high_card_object.to_s})"

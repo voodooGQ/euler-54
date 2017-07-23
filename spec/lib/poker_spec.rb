@@ -3,6 +3,7 @@ require 'spec_helper.rb'
 describe 'Poker' do
   let(:poker_string_1) { 'TH JH QH KH AH 4C 6C 8C TC QC' }
   let(:poker_string_2) { 'AH 2C 4D 5S 8H TH TC 9D 8C 7S' }
+  let(:poker_string_3) { 'TH JH QH KH AH TS JS QS KS AS' }
   let(:hand_to_small) { 'AH 2C 4D 5S 8H TH TC 9D 8C' }
   let(:hand_to_large) { 'AH 2C 4D 5S 8H TH TC 9D 8C 7S QC' }
 
@@ -25,5 +26,16 @@ describe 'Poker' do
     expect(hand.first.value).to eq(10)
     expect(hand.last.suit).to eq('S')
     expect(hand.last.value).to eq(7)
+  end
+
+  it 'declares the correct winner and combo' do
+    game = Poker.new(poker_string_1)
+    expect(game.declare_winner).to eq('Player 1 wins with a Royal Flush')
+
+    game = Poker.new(poker_string_2)
+    expect(game.declare_winner).to eq('Player 2 wins with One Pair')
+
+    game = Poker.new(poker_string_3)
+    expect(game.declare_winner).to eq('Players pushed with a Royal Flush')
   end
 end
