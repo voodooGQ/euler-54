@@ -80,4 +80,10 @@ describe 'Hand' do
     expect(straight.royal_flush?).to eq(false)
     expect(flush.royal_flush?).to eq(false)
   end
+
+  it 'returns the correct high card' do
+    expect(high_card.high_card).to eq(14)
+    expect(quads.high_card).to eq(3)
+    expect(two_pair.high_card).to eq(10)
+  end
 end

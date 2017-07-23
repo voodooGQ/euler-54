@@ -40,12 +40,16 @@ class Hand
   end
 
   def straight_flush?
-    self.straight? && self.flush?
+    straight? && flush?
   end
 
   def royal_flush?
-    return false unless self.flush?
+    return false unless flush?
     @values.keys.sort == [10,11,12,13,14]
+  end
+
+  def high_card
+    @values.keys.sort.last
   end
 
   private
