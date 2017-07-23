@@ -69,7 +69,7 @@ class Hand
   # Get a hash of the card values (key) in the hand and the count (value)
   def card_value_count
     @cards.each_with_object({}) do |card, hash|
-      hash.key?(card.value) ? hash[card.value] += 1 : hash[card.value] = 1
+      hash[card.value] = hash.key?(card.value) ? (hash[card.value] += 1) : 1
     end
   end
 end
