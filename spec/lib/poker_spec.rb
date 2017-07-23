@@ -29,13 +29,16 @@ describe 'Poker' do
   end
 
   it 'declares the correct winner and combo' do
-    game = Poker.new(poker_string_1)
-    expect(game.declare_winner).to eq('Player 1 wins with a Royal Flush')
+    winner = Poker.new(poker_string_1).declare_winner
+    expect(winner[0]).to eq(1)
+    expect(winner[1]).to eq('Player 1 wins with a Royal Flush')
 
-    game = Poker.new(poker_string_2)
-    expect(game.declare_winner).to eq('Player 2 wins with One Pair')
+    winner = Poker.new(poker_string_2).declare_winner
+    expect(winner[0]).to eq(2)
+    expect(winner[1]).to eq('Player 2 wins with One Pair')
 
-    game = Poker.new(poker_string_3)
-    expect(game.declare_winner).to eq('Players pushed with a Royal Flush')
+    winner = Poker.new(poker_string_3).declare_winner
+    expect(winner[0]).to eq(0)
+    expect(winner[1]).to eq('Players pushed with a Royal Flush')
   end
 end

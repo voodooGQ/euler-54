@@ -15,11 +15,11 @@ class Poker
     player_2 = Score.new(@hand_2)
 
     if player_1.points > player_2.points
-      "Player 1 wins with #{player_1.combo}"
+      [1, "Player 1 wins with #{player_1.combo}"]
     elsif player_1.points < player_2.points
-      "Player 2 wins with #{player_2.combo}"
+      [2, "Player 2 wins with #{player_2.combo}"]
     else
-      "Players pushed with #{player_1.combo}"
+      [0, "Players pushed with #{player_1.combo}"]
     end
   end
 
