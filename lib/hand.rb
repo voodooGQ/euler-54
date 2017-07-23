@@ -1,4 +1,5 @@
 #require './card.rb'
+#require 'byebug'
 
 class Hand
   attr_reader :cards, :values
@@ -36,6 +37,10 @@ class Hand
 
   def straight_flush?
     self.straight? && self.flush?
+  end
+
+  def full_house?
+    @values.has_value?(3) && @values.has_value?(2)
   end
 
   private
