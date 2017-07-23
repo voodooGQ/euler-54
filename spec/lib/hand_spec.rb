@@ -59,6 +59,12 @@ describe 'Hand' do
     expect(straight.flush?).to eq(false)
   end
 
+  it 'detects a full house' do
+    expect(full_house.full_house?).to eq(true)
+    expect(trips.full_house?).to eq(false)
+    expect(one_pair.full_house?).to eq(false)
+  end
+
   it 'detects a straight flush' do
     expect(straight_flush.flush?).to eq(true)
     expect(straight_flush.straight?).to eq(true)
@@ -67,9 +73,11 @@ describe 'Hand' do
     expect(flush.straight_flush?).to eq(false)
   end
 
-  it 'detects a full house' do
-    expect(full_house.full_house?).to eq(true)
-    expect(trips.full_house?).to eq(false)
-    expect(one_pair.full_house?).to eq(false)
+  it 'detects a royal flush' do
+    expect(royal_flush.royal_flush?).to eq(true)
+    expect(royal_flush.flush?).to eq(true)
+    expect(royal_flush.straight?).to eq(true)
+    expect(straight.royal_flush?).to eq(false)
+    expect(flush.royal_flush?).to eq(false)
   end
 end

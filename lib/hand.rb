@@ -35,12 +35,17 @@ class Hand
     @cards.map(&:suit).uniq.size == 1
   end
 
+  def full_house?
+    @values.has_value?(3) && @values.has_value?(2)
+  end
+
   def straight_flush?
     self.straight? && self.flush?
   end
 
-  def full_house?
-    @values.has_value?(3) && @values.has_value?(2)
+  def royal_flush?
+    return false unless self.flush?
+    @values.keys.sort == [10,11,12,13,14]
   end
 
   private
