@@ -4,7 +4,7 @@ RSpec.describe 'Score' do
   include_context 'poker_hands'
 
   it 'raises an error when it cannot query a "values" method/accessor' do
-    expect { Score.new(Object.new) }.to raise_error(Exception)
+    expect { Score.new(Object.new) }.to raise_error(StandardError)
   end
 
   it 'properly scores a royal flush' do

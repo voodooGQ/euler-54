@@ -43,16 +43,16 @@ class Card
 
   def validate(str)
     unless str.kind_of?(String) && str.size == 2
-      raise Exception, 'Card requires a 2 character string'
+      raise StandardError, 'Card requires a 2 character string'
     end
 
     unless SUITS.has_key?(str[1].to_sym)
-      raise Exception, 'Strings second character must be one of the following ' \
+      raise StandardError, 'Strings second character must be one of the following ' \
         'suit character codes (C,D,H,S)'
     end
 
     unless FACE.has_key?(str[0].to_sym) || (2..9).include?(str[0].to_i)
-      raise Exception, 'Strings first character must be a number 2 - 9 or one' \
+      raise StandardError, 'Strings first character must be a number 2 - 9 or one' \
         'of the following character codes (T,J,Q,K,A)'
     end
   end

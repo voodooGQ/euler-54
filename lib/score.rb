@@ -3,7 +3,7 @@ class Score
 
   def initialize(hand)
     unless hand.respond_to?('values')
-      raise Exception, 'Only a hand of cards with value can be scored'
+      raise StandardError, 'Only a hand of cards with value can be scored'
     end
     @hand = hand
     set_points_and_combo

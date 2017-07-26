@@ -7,21 +7,21 @@ describe 'Card' do
   let(:six_of_spades) { Card.new('6S') }
 
   it 'raises an error if the passed string param is not 2 characters' do
-    expect{ Card.new('A') }.to raise_error(Exception)
-    expect{ Card.new('A10') }.to raise_error(Exception)
+    expect{ Card.new('A') }.to raise_error(StandardError)
+    expect{ Card.new('A10') }.to raise_error(StandardError)
   end
 
   it 'raises an error if the passed suit character code is not C,D,H, or S' do
-    expect{ Card.new('AQ') }.to raise_error(Exception)
-    expect{ Card.new('AL') }.to raise_error(Exception)
-    expect{ Card.new('AB') }.to raise_error(Exception)
+    expect{ Card.new('AQ') }.to raise_error(StandardError)
+    expect{ Card.new('AL') }.to raise_error(StandardError)
+    expect{ Card.new('AB') }.to raise_error(StandardError)
   end
 
   it 'raises an error if the passed card value is not 2-9 or T,J,Q,K,A' do
-    expect{ Card.new('1D') }.to raise_error(Exception)
-    expect{ Card.new('YD') }.to raise_error(Exception)
-    expect{ Card.new('10D') }.to raise_error(Exception)
-    expect{ Card.new('*S') }.to raise_error(Exception)
+    expect{ Card.new('1D') }.to raise_error(StandardError)
+    expect{ Card.new('YD') }.to raise_error(StandardError)
+    expect{ Card.new('10D') }.to raise_error(StandardError)
+    expect{ Card.new('*S') }.to raise_error(StandardError)
   end
 
   it 'provides the correct suit' do

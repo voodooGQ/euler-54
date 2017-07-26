@@ -27,7 +27,7 @@ class Poker
 
   def validate
     unless @game_string.size == 10
-      raise Exception, 'You must pass a string with 10 card values to play ' \
+      raise StandardError, 'You must pass a string with 10 card values to play ' \
         'poker'
     end
   end

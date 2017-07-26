@@ -8,8 +8,8 @@ describe 'Poker' do
   let(:hand_to_large) { 'AH 2C 4D 5S 8H TH TC 9D 8C 7S QC' }
 
   it 'raises an error when the string size does not produce 10 card strings' do
-    expect { Poker.new(hand_to_small) }.to raise_error(Exception)
-    expect { Poker.new(hand_to_large) }.to raise_error(Exception)
+    expect { Poker.new(hand_to_small) }.to raise_error(StandardError)
+    expect { Poker.new(hand_to_large) }.to raise_error(StandardError)
   end
 
   it 'generates the proper hand_1 based on the string supplied' do
